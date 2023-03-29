@@ -43,10 +43,10 @@ function draw () {
 
   // clear screen
   background(bg_color1);
-  noStroke();
+  // noStroke();
 
   // draw a 7x4 grid of faces
-  let w = canvasWidth / 7;
+  let w = canvasHeight / 4;
   let h = canvasHeight / 4;
   for(let i=0; i<4; i++) {
     for(let j=0; j<7; j++) {
@@ -69,7 +69,8 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        orangeAlienFace(tilt_value, eye_value, mouth_value);
+        // orangeAlienFace(tilt_value, eye_value, mouth_value);
+        myFace();
         pop();
       
     }
