@@ -3,6 +3,6 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Just a test drawing from last week.
+>I want to draw panda faces and I also want to try using bezier curves. There are a lot of numbers to make the curves in the right place. I'll see if I can paramiterize the bezier curves.
 
 

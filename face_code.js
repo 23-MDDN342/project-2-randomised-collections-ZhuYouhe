@@ -19,30 +19,42 @@
 function myFace(){
   rectMode(CENTER);
   strokeWeight(0.2);
-  fill(200);
-    ellipse(0,0,20);
-    fill(255);
-    ellipse(-5,-3,5);
-    ellipse(5,-3,5);
-    fill(100);
-    rect(0,5,7,3);
-    fill(2555);
-    rect(0,4,7,1);
-    rect(0,7,7,1);
+  // fill(200);
+  //   ellipse(0,0,20);
+  //   fill(255);
+  //   ellipse(-5,-3,5);
+  //   ellipse(5,-3,5);
+  //   fill(100);
+  //   rect(0,5,7,3);
+  //   fill(2555);
+  //   rect(0,4,7,1);
+  //   rect(0,7,7,1);
   
+  beginShape();
+  vertex(-5, -3);
+  bezierVertex(-5, -3, -5, -4, -6, -4);
+  bezierVertex(-8, -5, -4, -8, -4, -5);
+  bezierVertex(-4.5, -4, -3.5, -4, -3.5, -4);
+  endShape();
 
+  beginShape();
+  vertex(5, -3);
+  bezierVertex(5, -3, 5, -4, 6, -4);
+  bezierVertex(8, -5, 4, -8, 4, -5);
+  bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
+  endShape();
 
-  // beginShape();
-  // vertex(-6, 0);
-  // bezierVertex(-5, -1, -6, -6, 0, -6);
-  // bezierVertex(6, -6, 5, -1, 6, 0);
-  // endShape();
+  beginShape();
+  vertex(-6, 0);
+  bezierVertex(-5, -1, -6, -6, 0, -6);
+  bezierVertex(6, -6, 5, -1, 6, 0);
+  endShape();
 
-  // beginShape();
-  // vertex(-6, 0);
-  // bezierVertex(-10, 1, -8, 9, 0, 8);
-  // bezierVertex(8, 9, 10, 1, 6, 0);
-  // endShape();
+  beginShape();
+  vertex(-6, 0);
+  bezierVertex(-10, 1, -8, 9, 0, 8);
+  bezierVertex(8, 9, 10, 1, 6, 0);
+  endShape();
 
 }
 
