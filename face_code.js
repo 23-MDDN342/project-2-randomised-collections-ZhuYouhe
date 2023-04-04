@@ -18,7 +18,7 @@
 
 function myFace(){
   rectMode(CENTER);
-  strokeWeight(0.4);
+  strokeWeight(0.2);
   fill(200);
     ellipse(0,0,20);
     fill(255);
@@ -29,6 +29,20 @@ function myFace(){
     fill(2555);
     rect(0,4,7,1);
     rect(0,7,7,1);
+  
+
+
+  // beginShape();
+  // vertex(-6, 0);
+  // bezierVertex(-5, -1, -6, -6, 0, -6);
+  // bezierVertex(6, -6, 5, -1, 6, 0);
+  // endShape();
+
+  // beginShape();
+  // vertex(-6, 0);
+  // bezierVertex(-10, 1, -8, 9, 0, 8);
+  // bezierVertex(8, 9, 10, 1, 6, 0);
+  // endShape();
 
 }
 
