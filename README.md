@@ -3,6 +3,6 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Added some codes to 'editor.js' to show the coordinates of mouse, so that I can find the bezier vertex directly by eye.
-
+>Added control lines (red) to see the bezier controls clearly.
+I've finally get the beziers to move with the slider, now the lower part of the panda face can be changed from flat to round (not exactly what I want for the shape), but it's a good sign at this stage. I'll apply the function to other parts of the face. Eyes, nose and mouth will be added later.
 

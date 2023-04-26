@@ -100,7 +100,8 @@ function draw () {
     simplePurpleFace();
   }
   if (mode == '4') {
-    myFace();
+    let bezierDegree = map(s1, 0, 100, 0.3, 1);
+    myFace(bezierDegree);
   }
 
   pop();

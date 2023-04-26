@@ -16,7 +16,7 @@
 
 
 
-function myFace(){
+function myFace(bezierDegree){
   rectMode(CENTER);
   strokeWeight(0.2);
   // fill(200);
@@ -54,15 +54,54 @@ function myFace(){
   endShape();
 
   // Lower half face
+
+  // Define bezier's start and end points
+  let startX = -6;
+  let startY = 0;
+  let endX = 0;
+  let endY = 8;
+  let endX2 = 6;
+  let endY2 = 0;
+
+  // Bezier degree
+  // let bezierDegree = 0.4;
+
+  // Control points coordinates
+  let controlX1 = startX + (endX-4)  * bezierDegree;
+  let controlY1 = startY + (endY-7)  * bezierDegree;
+  let controlX2 = endX + (endX - 8) * bezierDegree;
+  let controlY2 = endY + (endY -7) * bezierDegree;
+  let controlX3 = endX + (endX2+2)  * bezierDegree;
+  let controlY3 = endY + (endY2+1)  * bezierDegree;
+  let controlX4 = endX2 + (endX2 - 2) * bezierDegree;
+  let controlY4 = endY2 + (endY2 +1) * bezierDegree;
+
   beginShape();
-  vertex(-6, 0);
-  bezierVertex(-10, 1, -8, 9, 0, 8);
-  bezierVertex(8, 9, 10, 1, 6, 0);
+  vertex(startX, startY);
+  bezierVertex(controlX1, controlY1, controlX2, controlY2, endX, endY);
+  bezierVertex(controlX3, controlY3, controlX4, controlY4, endX2, endY2);
   endShape();
 
-  strokeWeight(0.5);
-  point(-6, 0);
-  point(6, 0);
+  // beginShape();
+  // vertex(-6, 0);
+  // bezierVertex(-10, 1, -8, 9, 0, 8);
+  // bezierVertex(8, 9, 10, 1, 6, 0);
+  // endShape();
+
+  // Draw Control lines
+  stroke(255,0,0);
+  strokeWeight(0.1);
+  // Top bezier control lines
+  line(-6, 0, -5, -1);
+  line(-6, -6, 0, -6);
+  line(0, -6, 6, -6);
+  line(5, -1, 6, 0);
+
+  // Lower bezier control lines
+  line(-6, 0, -10, 1);
+  line(-8, 9, 0, 8);
+  line(0, 8, 8, 9);
+  line(10, 1, 6, 0);
 }
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
