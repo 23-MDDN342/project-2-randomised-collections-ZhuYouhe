@@ -16,7 +16,7 @@
 
 
 
-function myFace(bezierDegree){
+function myFace(lowerFaceSize){
   rectMode(CENTER);
   strokeWeight(0.2);
   // fill(200);
@@ -46,7 +46,7 @@ function myFace(bezierDegree){
   bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
   endShape();
 
-  // Top half face
+  // Upper half face
   beginShape();
   vertex(-6, 0);
   bezierVertex(-5, -1, -6, -6, 0, -6);
@@ -54,32 +54,31 @@ function myFace(bezierDegree){
   endShape();
 
   // Lower half face
-
   // Define bezier's start and end points
-  let startX = -6;
-  let startY = 0;
-  let endX = 0;
-  let endY = 8;
-  let endX2 = 6;
-  let endY2 = 0;
+  let LF_st_X = -6;
+  let LF_st_Y = 0;
+  let LF_ed_X1 = 0;
+  let LF_ed_Y1 = 8;
+  let LF_ed_X2 = 6;
+  let LF_ed_Y2 = 0;
 
   // Bezier degree
-  // let bezierDegree = 0.4;
+  // let lowerFaceSize = 0.4;
 
   // Control points coordinates
-  let controlX1 = startX + (endX-4)  * bezierDegree;
-  let controlY1 = startY + (endY-7)  * bezierDegree;
-  let controlX2 = endX + (endX - 8) * bezierDegree;
-  let controlY2 = endY + (endY -7) * bezierDegree;
-  let controlX3 = endX + (endX2+2)  * bezierDegree;
-  let controlY3 = endY + (endY2+1)  * bezierDegree;
-  let controlX4 = endX2 + (endX2 - 2) * bezierDegree;
-  let controlY4 = endY2 + (endY2 +1) * bezierDegree;
+  let LF_ctrl_X1 = LF_st_X + (LF_ed_X1-4)  * lowerFaceSize;
+  let controlY1 = LF_st_Y + (LF_ed_Y1-7)  * lowerFaceSize;
+  let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
+  let controlY2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
+  let LF_ctrl_X3 = LF_ed_X1 + (LF_ed_X2+2)  * lowerFaceSize;
+  let controlY3 = LF_ed_Y1 + (LF_ed_Y2+1)  * lowerFaceSize;
+  let LF_ctrl_X4 = LF_ed_X2 + (LF_ed_X2 - 2) * lowerFaceSize;
+  let controlY4 = LF_ed_Y2 + (LF_ed_Y2 +1) * lowerFaceSize;
 
   beginShape();
-  vertex(startX, startY);
-  bezierVertex(controlX1, controlY1, controlX2, controlY2, endX, endY);
-  bezierVertex(controlX3, controlY3, controlX4, controlY4, endX2, endY2);
+  vertex(LF_st_X, LF_st_Y);
+  bezierVertex(LF_ctrl_X1, controlY1, LF_ctrl_X2, controlY2, LF_ed_X1, LF_ed_Y1);
+  bezierVertex(LF_ctrl_X3, controlY3, LF_ctrl_X4, controlY4, LF_ed_X2, LF_ed_Y2);
   endShape();
 
   // beginShape();
@@ -88,10 +87,11 @@ function myFace(bezierDegree){
   // bezierVertex(8, 9, 10, 1, 6, 0);
   // endShape();
 
+  /////////////////////////////////////////
   // Draw Control lines
   stroke(255,0,0);
   strokeWeight(0.1);
-  // Top bezier control lines
+  // Upper bezier control lines
   line(-6, 0, -5, -1);
   line(-6, -6, 0, -6);
   line(0, -6, 6, -6);
@@ -102,6 +102,7 @@ function myFace(bezierDegree){
   line(-8, 9, 0, 8);
   line(0, 8, 8, 9);
   line(10, 1, 6, 0);
+  ///////////////////////////////////////////
 }
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {

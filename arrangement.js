@@ -54,23 +54,32 @@ function draw () {
       let x = w/2 + w*j;
      
         // center face
-        let eye_value = int(random(2,4));
-        let tilt_value = random(-45, 45);
-        let mouth_value = random(3,4);
+        // let eye_value = int(random(2,4));
+        // let tilt_value = random(-45, 45);
+        // let mouth_value = random(3,4);
         let is_cyclops = random(0, 100);
 
-        if(is_cyclops < 10) {
-          eye_value = 1;
-          tilt_value = random(-5, 5);
-          mouth_value = random(0, 1.7);
+        let lowerFaceSize = int(random(1,1.5));
+
+        // if(is_cyclops < 10) {
+        //   eye_value = 1;
+        //   tilt_value = random(-5, 5);
+        //   mouth_value = random(0, 1.7);
+        // }
+
+        if(is_cyclops >= 10 && is_cyclops <=50) {
+          // eye_value = 1;
+          lowerFaceSize = random(0.3, 1.3);
+          // mouth_value = random(0, 1.7);
         }
+
 
         push();
         translate(x, y);
         scale(w/25, h/25);
         
         // orangeAlienFace(tilt_value, eye_value, mouth_value);
-        myFace();
+        myFace(lowerFaceSize);
         pop();
       
     }
