@@ -30,6 +30,7 @@ function myFace(){
   //   rect(0,4,7,1);
   //   rect(0,7,7,1);
   
+  // Left ear
   beginShape();
   vertex(-5, -3);
   bezierVertex(-5, -3, -5, -4, -6, -4);
@@ -37,6 +38,7 @@ function myFace(){
   bezierVertex(-4.5, -4, -3.5, -4, -3.5, -4);
   endShape();
 
+  // Right ear
   beginShape();
   vertex(5, -3);
   bezierVertex(5, -3, 5, -4, 6, -4);
@@ -44,18 +46,23 @@ function myFace(){
   bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
   endShape();
 
+  // Top half face
   beginShape();
   vertex(-6, 0);
   bezierVertex(-5, -1, -6, -6, 0, -6);
   bezierVertex(6, -6, 5, -1, 6, 0);
   endShape();
 
+  // Lower half face
   beginShape();
   vertex(-6, 0);
   bezierVertex(-10, 1, -8, 9, 0, 8);
   bezierVertex(8, 9, 10, 1, 6, 0);
   endShape();
 
+  strokeWeight(0.5);
+  point(-6, 0);
+  point(6, 0);
 }
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {

@@ -3,6 +3,6 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->I want to draw panda faces and I also want to try using bezier curves. There are a lot of numbers to make the curves in the right place. I'll see if I can paramiterize the bezier curves.
+>Added some codes to 'editor.js' to show the coordinates of mouse, so that I can find the bezier vertex directly by eye.
 
 

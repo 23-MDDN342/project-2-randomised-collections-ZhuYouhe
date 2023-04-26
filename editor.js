@@ -118,6 +118,21 @@ function draw () {
   }
 
   pop();
+
+  // Show mouse coordinate within face guide
+  push();
+  strokeWeight(2);
+  stroke(255);
+  point(288,58);
+  point(672,58);
+  point(672,442);
+  point(288,442);
+  let mX = int(map(mouseX-480,-480,480,-25,25));
+  let mY = int(map(mouseY-250,-250,250,-13,13));
+  
+  fill(0);
+  text("Mouse X: " + mX + ", Mouse Y: " + mY, 410, 20);
+  pop();
 }
 
 function keyTyped() {
