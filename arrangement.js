@@ -59,7 +59,8 @@ function draw () {
         // let mouth_value = random(3,4);
         let is_cyclops = random(0, 100);
 
-        let lowerFaceSize = int(random(1,1.5));
+        let Cheek = int(random(-10,30));
+        let Jaw = int(random(-15,25));
 
         // if(is_cyclops < 10) {
         //   eye_value = 1;
@@ -69,8 +70,8 @@ function draw () {
 
         if(is_cyclops >= 10 && is_cyclops <=50) {
           // eye_value = 1;
-          lowerFaceSize = random(0.3, 1.3);
-          // mouth_value = random(0, 1.7);
+          Cheek = random(0, 20);
+          Jaw = random(-5, 15);
         }
 
 
@@ -79,7 +80,7 @@ function draw () {
         scale(w/25, h/25);
         
         // orangeAlienFace(tilt_value, eye_value, mouth_value);
-        myFace(lowerFaceSize);
+        myFace(Cheek, Jaw);
         pop();
       
     }

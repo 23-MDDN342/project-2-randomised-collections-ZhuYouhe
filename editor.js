@@ -47,7 +47,7 @@ function setup () {
   faceSelector.option('2');
   faceSelector.option('3');
   faceSelector.option('4');
-  faceSelector.value('4');
+  faceSelector.value('1');
   faceSelector.parent('selector1Container');
 }
 
@@ -84,7 +84,15 @@ function draw () {
   scale(face_scale);
 
   push();
+
   if (mode == '1') {
+    let Cheek = map(s4, 0, 100, -5, 35);
+    let Jaw = map(s5, 0, 100, -10, 30);
+
+    myFace(Cheek, Jaw);
+  }
+
+  if (mode == '2') {
    // draw face using values mapped from 3 sliders
    let tilt_value = map(s1, 0, 100, -90, 90);
    let mouth_value = map(s2, 0, 100, 0.5, 10);
@@ -92,20 +100,17 @@ function draw () {
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
 
-  if (mode == '2') {
+  if (mode == '3') {
      // let slider value 1 indicate thinness
      blockyFace(s1);
   }
-  if (mode == '3') {
+  if (mode == '4') {
     simplePurpleFace();
   }
-  if (mode == '4') {
-    let lowerFaceSize = map(s1, 0, 100, 0.3, 1.3);
-    myFace(lowerFaceSize);
-  }
-
+ 
   pop();
 
+  push();
   if(show_face_guide) {
     strokeWeight(0.1);
     rectMode(CORNER); 
@@ -133,6 +138,8 @@ function draw () {
   
   fill(0);
   text("Mouse X: " + mX + ", Mouse Y: " + mY, 410, 20);
+  pop();
+
   pop();
 }
 

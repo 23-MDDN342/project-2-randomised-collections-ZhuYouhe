@@ -14,21 +14,16 @@
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
 
+// Acronym:
+// UF = Upper Face
+// MF = Middle line of Face
+// LF = Lower Face
 
-
-function myFace(lowerFaceSize){
+function myFace(Cheek, Jaw){
+  angleMode(DEGREES);
   rectMode(CENTER);
   strokeWeight(0.2);
-  // fill(200);
-  //   ellipse(0,0,20);
-  //   fill(255);
-  //   ellipse(-5,-3,5);
-  //   ellipse(5,-3,5);
-  //   fill(100);
-  //   rect(0,5,7,3);
-  //   fill(2555);
-  //   rect(0,4,7,1);
-  //   rect(0,7,7,1);
+  
   
   // Left ear
   beginShape();
@@ -46,39 +41,109 @@ function myFace(lowerFaceSize){
   bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
   endShape();
 
-  // Upper half face
+  // Upper half of face
   beginShape();
   vertex(-6, 0);
   bezierVertex(-5, -1, -6, -6, 0, -6);
   bezierVertex(6, -6, 5, -1, 6, 0);
   endShape();
 
-  // Lower half face
+  // // Lower half of face
+  // // Define bezier's start and end points
+  // let LF_st_X = -6;
+  // let LF_st_Y = 0;
+  // let LF_ed_X1 = 0;
+  // let LF_ed_Y1 = 8;
+  // let LF_ed_X2 = 6;
+  // let LF_ed_Y2 = 0;
+
+  // // Bezier degree
+  // // let lowerFaceSize = 0.4;
+
+  // // Control points coordinates
+  // let LF_ctrl_X1 = LF_st_X + (LF_ed_X1-4)  * lowerFaceSize;
+  // let LF_ctrl_Y1 = LF_st_Y + (LF_ed_Y1-7)  * lowerFaceSize;
+  // let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
+  // let LF_ctrl_Y2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
+  // let LF_ctrl_X3 = LF_ed_X1 + (LF_ed_X2+2)  * lowerFaceSize;
+  // let LF_ctrl_Y3 = LF_ed_Y1 + (LF_ed_Y2+1)  * lowerFaceSize;
+  // let LF_ctrl_X4 = LF_ed_X2 + (LF_ed_X2 - 2) * lowerFaceSize;
+  // let LF_ctrl_Y4 = LF_ed_Y2 + (LF_ed_Y2 +1) * lowerFaceSize;
+
+  // beginShape();
+  // vertex(LF_st_X, LF_st_Y);
+  // bezierVertex(LF_ctrl_X1, LF_ctrl_Y1, LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
+  // bezierVertex(LF_ctrl_X3, LF_ctrl_Y3, LF_ctrl_X4, LF_ctrl_Y4, LF_ed_X2, LF_ed_Y2);
+  // endShape();
+
+  // // beginShape();
+  // // vertex(-6, 0);
+  // // bezierVertex(-10, 1, -8, 9, 0, 8);
+  // // bezierVertex(8, 9, 10, 1, 6, 0);
+  // // endShape();
+
+  // /////////////////////////////////////////
+  // // Draw Control lines
+  // stroke(255,0,0);
+  // strokeWeight(0.1);
+  // // Upper bezier control lines
+  // line(-6, 0, -5, -1);
+  // line(-6, -6, 0, -6);
+  // line(0, -6, 6, -6);
+  // line(5, -1, 6, 0);
+
+  // // Lower bezier control lines
+  // line(-6, 0, -10, 1);
+  // line(-8, 9, 0, 8);
+  // line(0, 8, 8, 9);
+  // line(10, 1, 6, 0);
+  ///////////////////////////////////////////
+  lowerFace(Cheek, Jaw);
+}
+
+function lowerFace(Cheek, Jaw){
+  // Cheek is the angles of lower control lines (below middle line of face)
+  // Jaw is the angles of bottom control lines
   // Define bezier's start and end points
-  let LF_st_X = -6;
+  let LF_ctrl_Radius1 = 3.3;
+  let LF_ctrl_Radius2 = 6;
+  // Cheek = 17;
+  // Jaw = 20;
+  let MF_width = 6;
+
+  let LF_st_X = -MF_width;
   let LF_st_Y = 0;
   let LF_ed_X1 = 0;
   let LF_ed_Y1 = 8;
-  let LF_ed_X2 = 6;
+  let LF_ed_X2 = MF_width;
   let LF_ed_Y2 = 0;
+
+  let LF_ctrl_X1 = LF_st_X + cos(180-Cheek) * LF_ctrl_Radius1; // Lower left control point X
+  let LF_ctrl_Y1 = LF_st_Y + sin(180-Cheek) * LF_ctrl_Radius1; // Lower left control point Y
+  let LF_ctrl_X2 = LF_ed_X1 + cos(180-Jaw) * LF_ctrl_Radius2; // Bottom left control point X
+  let LF_ctrl_Y2 = LF_ed_Y1 + sin(180-Jaw) * LF_ctrl_Radius2; // Bottom left control point Y
+  let LF_ctrl_X3 = LF_ed_X1 + cos(Jaw) * LF_ctrl_Radius2; // Bottom right control point X
+  let LF_ctrl_Y3 = LF_ed_Y1 + sin(Jaw) * LF_ctrl_Radius2; // Bottom right control point Y
+  let LF_ctrl_X4 = LF_ed_X2 + cos(Cheek) * LF_ctrl_Radius1; // Lower right control point X
+  let LF_ctrl_Y4 = LF_ed_Y2 + sin(Cheek) * LF_ctrl_Radius1; // Lower right control point Y
 
   // Bezier degree
   // let lowerFaceSize = 0.4;
 
   // Control points coordinates
-  let LF_ctrl_X1 = LF_st_X + (LF_ed_X1-4)  * lowerFaceSize;
-  let controlY1 = LF_st_Y + (LF_ed_Y1-7)  * lowerFaceSize;
-  let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
-  let controlY2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
-  let LF_ctrl_X3 = LF_ed_X1 + (LF_ed_X2+2)  * lowerFaceSize;
-  let controlY3 = LF_ed_Y1 + (LF_ed_Y2+1)  * lowerFaceSize;
-  let LF_ctrl_X4 = LF_ed_X2 + (LF_ed_X2 - 2) * lowerFaceSize;
-  let controlY4 = LF_ed_Y2 + (LF_ed_Y2 +1) * lowerFaceSize;
+  // let LF_ctrl_X1 = LF_st_X + (LF_ed_X1-4)  * lowerFaceSize;
+  // let LF_ctrl_Y1 = LF_st_Y + (LF_ed_Y1-7)  * lowerFaceSize;
+  // let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
+  // let LF_ctrl_Y2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
+  // let LF_ctrl_X3 = LF_ed_X1 + (LF_ed_X2+2)  * lowerFaceSize;
+  // let LF_ctrl_Y3 = LF_ed_Y1 + (LF_ed_Y2+1)  * lowerFaceSize;
+  // let LF_ctrl_X4 = LF_ed_X2 + (LF_ed_X2 - 2) * lowerFaceSize;
+  // let LF_ctrl_Y4 = LF_ed_Y2 + (LF_ed_Y2 +1) * lowerFaceSize;
 
   beginShape();
   vertex(LF_st_X, LF_st_Y);
-  bezierVertex(LF_ctrl_X1, controlY1, LF_ctrl_X2, controlY2, LF_ed_X1, LF_ed_Y1);
-  bezierVertex(LF_ctrl_X3, controlY3, LF_ctrl_X4, controlY4, LF_ed_X2, LF_ed_Y2);
+  bezierVertex(LF_ctrl_X1, LF_ctrl_Y1, LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
+  bezierVertex(LF_ctrl_X3, LF_ctrl_Y3, LF_ctrl_X4, LF_ctrl_Y4, LF_ed_X2, LF_ed_Y2);
   endShape();
 
   // beginShape();
@@ -98,13 +163,19 @@ function myFace(lowerFaceSize){
   line(5, -1, 6, 0);
 
   // Lower bezier control lines
-  line(-6, 0, -10, 1);
-  line(-8, 9, 0, 8);
-  line(0, 8, 8, 9);
-  line(10, 1, 6, 0);
+  line(LF_st_X, LF_st_Y, LF_ctrl_X1, LF_ctrl_Y1);
+  line(LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
+  line(LF_ed_X1, LF_ed_Y1, LF_ctrl_X3, LF_ctrl_Y3);
+  line(LF_ctrl_X4, LF_ctrl_Y4, LF_ed_X2, LF_ed_Y2);
   ///////////////////////////////////////////
 }
 
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
   const bg_color3 = [71, 222, 219];
   const fg_color3 = [255, 93, 35];
@@ -143,7 +214,6 @@ function orangeAlienFace(tilt_value, eye_value, mouth_value) {
   ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
 }
 
-
 function simplePurpleFace() {
   fill(234, 122, 244);
   noStroke();
@@ -171,3 +241,4 @@ function blockyFace(thinness_value) {
   ellipse(-2, -4, 1);
   ellipse( 2, -4, 1);
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
