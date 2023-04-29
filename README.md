@@ -3,6 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->I've made the control points like handles, which means that the 'start point' or 'end point' of a bezier shape is the center of circle, the length between 'start point'/'end point' and control point is the radius of circle, so the control point is like moving(rotating) along circle by changing the 'angle'. I think it is easier to make control of the beziers.
-Now only the lower part of the face is done and I'll apply the similar codes for the upper part of the face. The face's size control will be one function, soon I'll make functions of ears, eyes and mouth.
-There are Cheek and Jaw sliders to change the lower face size.
+>More face shape settings added. In editor page, top, middle and bottom parts of the face can be adjusted.

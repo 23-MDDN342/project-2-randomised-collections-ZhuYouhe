@@ -59,19 +59,24 @@ function draw () {
         // let mouth_value = random(3,4);
         let is_cyclops = random(0, 100);
 
-        let Cheek = int(random(-10,30));
-        let Jaw = int(random(-15,25));
+        let topHead_angle = random(170, 210);
+        let upperCheek_angle = random(-30, -70);
+        let MF_width = int(random(5, 7));
+        let cheek_angle = random(-5,35);
+        let jaw_angle = random(-10,30);
 
-        // if(is_cyclops < 10) {
+        if(is_cyclops < 10) {
         //   eye_value = 1;
         //   tilt_value = random(-5, 5);
         //   mouth_value = random(0, 1.7);
         // }
 
-        if(is_cyclops >= 10 && is_cyclops <=50) {
-          // eye_value = 1;
-          Cheek = random(0, 20);
-          Jaw = random(-5, 15);
+        // if(is_cyclops >= 10 && is_cyclops <=50) {
+          topHead_angle = random(175, 185);
+          upperCheek_angle = random(-40, -50);
+          MF_width = 6;
+          cheek_angle = random(14, 20);
+          jaw_angle = random(15, 25);
         }
 
 
@@ -80,7 +85,7 @@ function draw () {
         scale(w/25, h/25);
         
         // orangeAlienFace(tilt_value, eye_value, mouth_value);
-        myFace(Cheek, Jaw);
+        myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
         pop();
       
     }

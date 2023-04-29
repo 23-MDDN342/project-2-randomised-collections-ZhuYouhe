@@ -86,10 +86,13 @@ function draw () {
   push();
 
   if (mode == '1') {
-    let Cheek = map(s4, 0, 100, -5, 35);
-    let Jaw = map(s5, 0, 100, -10, 30);
+    let topHead_angle = map(s1, 0, 100, 175, 200);
+    let upperCheek_angle = map(s2, 0, 100, -30, -70);
+    let MF_width = map(s3, 0, 100, 5, 7);
+    let cheek_angle = map(s4, 0, 100, -5, 35);
+    let jaw_angle = map(s5, 0, 100, -10, 30);
 
-    myFace(Cheek, Jaw);
+    myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
   }
 
   if (mode == '2') {
@@ -125,14 +128,16 @@ function draw () {
 
   pop();
 
+  pop();
+
   // Show mouse coordinate within face guide
   push();
   strokeWeight(2);
   stroke(255);
-  point(288,58);
-  point(672,58);
-  point(672,442);
-  point(288,442);
+  // point(288,58);
+  // point(672,58);
+  // point(672,442);
+  // point(288,442);
   let mX = int(map(mouseX-480,-480,480,-25,25));
   let mY = int(map(mouseY-250,-250,250,-13,13));
   
@@ -140,7 +145,6 @@ function draw () {
   text("Mouse X: " + mX + ", Mouse Y: " + mY, 410, 20);
   pop();
 
-  pop();
 }
 
 function keyTyped() {
