@@ -61,7 +61,7 @@ function draw () {
 
         let topHead_angle = random(170, 210);
         let upperCheek_angle = random(-30, -70);
-        let MF_width = int(random(5, 7));
+        let MF_width = random(5, 7);
         let cheek_angle = random(-5,35);
         let jaw_angle = random(-10,30);
 

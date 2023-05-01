@@ -24,87 +24,45 @@ function myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angl
   rectMode(CENTER);
   strokeWeight(0.2);
   
+  ears();
   
-  // Left ear
-  beginShape();
-  vertex(-5, -3);
-  bezierVertex(-5, -3, -5, -4, -6, -4);
-  bezierVertex(-8, -5, -4, -8, -4, -5);
-  bezierVertex(-4.5, -4, -3.5, -4, -3.5, -4);
-  endShape();
+  // faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
+}
 
-  // Right ear
-  beginShape();
-  vertex(5, -3);
-  bezierVertex(5, -3, 5, -4, 6, -4);
-  bezierVertex(8, -5, 4, -8, 4, -5);
-  bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
-  endShape();
+function ears(){
+// Left ear
+beginShape();
+vertex(-5, -2.5);
+bezierVertex(-4.5, -3.5, -5, -4, -6, -4);
+bezierVertex(-8, -5, -4, -8, -4, -5);
+bezierVertex(-4.5, -4, -3.5, -4, -3.5, -4);
+endShape();
 
-  // Upper half of face
-  // beginShape();
-  // vertex(-6, 0);
-  // bezierVertex(-5, -1, -6, -6, 0, -6);
-  // bezierVertex(6, -6, 5, -1, 6, 0);
-  // endShape();
-
-  // // Lower half of face
-  // // Define bezier's start and end points
-  // let faceStart_X = -6;
-  // let faceStart_Y = 0;
-  // let LF_ed_X1 = 0;
-  // let LF_ed_Y1 = 8;
-  // let faceEnd_X = 6;
-  // let faceEnd_Y = 0;
-
-  // // Bezier degree
-  // // let lowerFaceSize = 0.4;
-
-  // // Control points coordinates
-  // let LF_ctrl_X1 = faceStart_X + (LF_ed_X1-4)  * lowerFaceSize;
-  // let LF_ctrl_Y1 = faceStart_Y + (LF_ed_Y1-7)  * lowerFaceSize;
-  // let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
-  // let LF_ctrl_Y2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
-  // let LF_ctrl_X3 = LF_ed_X1 + (faceEnd_X+2)  * lowerFaceSize;
-  // let LF_ctrl_Y3 = LF_ed_Y1 + (faceEnd_Y+1)  * lowerFaceSize;
-  // let LF_ctrl_X4 = faceEnd_X + (faceEnd_X - 2) * lowerFaceSize;
-  // let LF_ctrl_Y4 = faceEnd_Y + (faceEnd_Y +1) * lowerFaceSize;
-
-  // beginShape();
-  // vertex(faceStart_X, faceStart_Y);
-  // bezierVertex(LF_ctrl_X1, LF_ctrl_Y1, LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
-  // bezierVertex(LF_ctrl_X3, LF_ctrl_Y3, LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y);
-  // endShape();
-
-  // // beginShape();
-  // // vertex(-6, 0);
-  // // bezierVertex(-10, 1, -8, 9, 0, 8);
-  // // bezierVertex(8, 9, 10, 1, 6, 0);
-  // // endShape();
-
-  // /////////////////////////////////////////
-  // // Draw Control lines
-  // stroke(255,0,0);
-  // strokeWeight(0.1);
-  // // Upper bezier control lines
-  // line(-6, 0, -5, -1);
-  // line(-6, -6, 0, -6);
-  // line(0, -6, 6, -6);
-  // line(5, -1, 6, 0);
-
-  // // Lower bezier control lines
-  // line(-6, 0, -10, 1);
-  // line(-8, 9, 0, 8);
-  // line(0, 8, 8, 9);
-  // line(10, 1, 6, 0);
-  ///////////////////////////////////////////
-  faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
+// Right ear
+beginShape();
+vertex(5, -3);
+bezierVertex(5, -3, 5, -4, 6, -4);
+bezierVertex(8, -5, 4, -8, 4, -5);
+bezierVertex(4.5, -4, 3.5, -4, 3.5, -4);
+endShape();
+  
+push();
+  stroke(255,0,0);
+  strokeWeight(0.1);
+  line(-5, -2.5, -4.5, -3.5);
+  line(-5, -4, -6, -4);
+  line(-6, -4, -8, -5);
+  line(-4, -8, -4, -5);
+  line(-4, -5, -4.5, -4);
+  line(-3.5, -4, -3.5, -4);
+  pop();
 }
 
 function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle){
   
   // Define bezier's start and end points
-  // MF_width = 6; // Width of the face middle
+  // MF_width is the width of the face
+  // MF_width = 6;
 
   // Both upper and lower face bezier shapes start from left middle point, and end at right middle point
   let faceStart_X = -MF_width;
@@ -113,9 +71,9 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   let faceEnd_Y = 0;
 
   let UF_ed_X1 = 0;
-  let UF_ed_Y1 = -6; // Top head height
+  let UF_ed_Y1 = MF_width-12; // Top head height
   let LF_ed_X1 = 0;
-  let LF_ed_Y1 = 8; // Jaw height
+  let LF_ed_Y1 = 14-MF_width; // Jaw height
   
   
   // Upper half of face
@@ -123,17 +81,17 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   // topHead_angle is the angles of top control lines
   // upperCheek_angle = -45;
   // topHead_angle = 180;
-  let UF_ctrl_Radius1 = MF_width*0.2; // Upper cheek control handle length
-  let UF_ctrl_Radius2 = MF_width*1; // Top head control handle length
+  let UF_ctrl_Radius1 = MF_width-4.5; // Upper cheek control handle length
+  let UF_ctrl_Radius2 = 12-MF_width; // Top head control handle length
   
-  let UF_ctrl_X1 = faceStart_X + cos(upperCheek_angle) * UF_ctrl_Radius1; // Lower left control point X
-  let UF_ctrl_Y1 = faceStart_Y + sin(upperCheek_angle) * UF_ctrl_Radius1; // Lower left control point Y
-  let UF_ctrl_X2 = UF_ed_X1 + cos(topHead_angle) * UF_ctrl_Radius2; // Bottom left control point X
-  let UF_ctrl_Y2 = UF_ed_Y1 + sin(topHead_angle) * UF_ctrl_Radius2; // Bottom left control point Y
-  let UF_ctrl_X3 = UF_ed_X1 + cos(180-topHead_angle) * UF_ctrl_Radius2; // Bottom right control point X
-  let UF_ctrl_Y3 = UF_ed_Y1 + sin(180-topHead_angle) * UF_ctrl_Radius2; // Bottom right control point Y
-  let UF_ctrl_X4 = faceEnd_X + cos(-180-upperCheek_angle) * UF_ctrl_Radius1; // Lower right control point X
-  let UF_ctrl_Y4 = faceEnd_Y + sin(-180-upperCheek_angle) * UF_ctrl_Radius1; // Lower right control point Y
+  let UF_ctrl_X1 = faceStart_X + cos(upperCheek_angle) * UF_ctrl_Radius1; // Upper left control point X
+  let UF_ctrl_Y1 = faceStart_Y + sin(upperCheek_angle) * UF_ctrl_Radius1; // Upper left control point Y
+  let UF_ctrl_X2 = UF_ed_X1 + cos(topHead_angle) * UF_ctrl_Radius2; // Top left control point X
+  let UF_ctrl_Y2 = UF_ed_Y1 + sin(topHead_angle) * UF_ctrl_Radius2; // Top left control point Y
+  let UF_ctrl_X3 = UF_ed_X1 + cos(180-topHead_angle) * UF_ctrl_Radius2; // Top right control point X
+  let UF_ctrl_Y3 = UF_ed_Y1 + sin(180-topHead_angle) * UF_ctrl_Radius2; // Top right control point Y
+  let UF_ctrl_X4 = faceEnd_X + cos(-180-upperCheek_angle) * UF_ctrl_Radius1; // Upper right control point X
+  let UF_ctrl_Y4 = faceEnd_Y + sin(-180-upperCheek_angle) * UF_ctrl_Radius1; // Upper right control point Y
 
   beginShape();
   vertex(faceStart_X, faceStart_Y);
@@ -178,6 +136,7 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   bezierVertex(LF_ctrl_X3, LF_ctrl_Y3, LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y);
   endShape();
 
+  push();
   // beginShape();
   // vertex(-6, 0);
   // bezierVertex(-10, 1, -8, 9, 0, 8);
@@ -199,6 +158,7 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   line(LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
   line(LF_ed_X1, LF_ed_Y1, LF_ctrl_X3, LF_ctrl_Y3);
   line(LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y);
+  pop();
   ///////////////////////////////////////////
 }
 
