@@ -3,4 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->More face shape settings added. In editor page, top, middle and bottom parts of the face can be adjusted.
+>I'm having trouble with drawing the eyes shape. I've just got this sunglass looking eyes accidently, which is a bit funny.
