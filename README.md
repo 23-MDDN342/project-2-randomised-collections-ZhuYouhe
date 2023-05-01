@@ -3,4 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->I'm having trouble with drawing the eyes shape. I've just got this sunglass looking eyes accidently, which is a bit funny.
+>Eyes have been drawn. Lots of paras are used for the eyes and they are difficult to control. I'll try to make them simple, like only 2 or 3 types of shape.

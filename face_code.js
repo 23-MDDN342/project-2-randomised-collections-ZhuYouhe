@@ -32,7 +32,14 @@ function myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angl
   pop();
   
   faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
+  
+  push();
+  fill(0);
   eyes();
+  pop();
+
+  ellipse(-2,-0.5,0.5);
+  ellipse(2,-0.5,0.5);
 
 }
 
@@ -174,30 +181,32 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
 
 function eyes(){
   let eye_width = 3;
-let eyeLStart_X = -eye_width;
-  let eyeLStart_Y = 0;
-  let eyeLEnd_X = -eye_width+2;
+
+  ////// Left eye
+  let eyeLStart_X = -eye_width;
+  let eyeLStart_Y = -0.5;
+  let eyeLEnd_X = -1;
   let eyeLEnd_Y = 0;
 
-  let eyeLT_ed_X = -eye_width+1;
-  let eyeLT_ed_Y = -eye_width+2; // Left eye top
-  let eyeLD_ed_X = -eye_width+1;
-  let eyeLD_ed_Y = eye_width-2; // Left eye bottom
+  let eyeLT_ed_X = -eye_width+1.5;
+  let eyeLT_ed_Y = -eye_width+1; // Left eye top
+  let eyeLD_ed_X = -eye_width;
+  let eyeLD_ed_Y = 2; // Left eye bottom
   
   
-  // Upper half of face
+  
   // eyeLT_ctrl_angle1 is the angles of upper control lines (above middle line of face)
   // eyeLD_ctrl_angle1 is the angles of top control lines
-  let eyeLT_ctrl_angle1 = -90;
+  let eyeLT_ctrl_angle1 = -40;
   let eyeLT_ctrl_angle2 = 180;
   let eyeLT_ctrl_angle3 = 0;
-  let eyeLT_ctrl_angle4 = -90;
-  let eyeLD_ctrl_angle1 = 180;
-  let eyeLD_ctrl_angle2 = 180;
-  let eyeLD_ctrl_angle3 = 180;
-  let eyeLD_ctrl_angle4 = 180;
-  let eyeLT_ctrl_Radius1 = eye_width-4.5; // Upper cheek control handle length
-  let eyeLT_ctrl_Radius2 = 12-eye_width; // Top head control handle length
+  let eyeLT_ctrl_angle4 = -80;
+  let eyeLD_ctrl_angle1 = 140;
+  let eyeLD_ctrl_angle2 = -180;
+  let eyeLD_ctrl_angle3 = 0;
+  let eyeLD_ctrl_angle4 = 100;
+  let eyeLT_ctrl_Radius1 = 1; // Upper cheek control handle length
+  let eyeLT_ctrl_Radius2 = 1.1; // Top head control handle length
   
   let eyeLT_ctrl_X1 = eyeLStart_X + cos(eyeLT_ctrl_angle1) * eyeLT_ctrl_Radius1; // Upper left control point X
   let eyeLT_ctrl_Y1 = eyeLStart_Y + sin(eyeLT_ctrl_angle1) * eyeLT_ctrl_Radius1; // Upper left control point Y
@@ -208,12 +217,104 @@ let eyeLStart_X = -eye_width;
   let eyeLT_ctrl_X4 = eyeLEnd_X + cos(eyeLT_ctrl_angle4) * eyeLT_ctrl_Radius1; // Upper right control point X
   let eyeLT_ctrl_Y4 = eyeLEnd_Y + sin(eyeLT_ctrl_angle4) * eyeLT_ctrl_Radius1; // Upper right control point Y
 
+  let eyeLD_ctrl_Radius1 = 1.5; // Cheek control handle length
+  let eyeLD_ctrl_Radius2 = 1; // Jaw control handle length
+  
+  let eyeLD_ctrl_X1 = eyeLStart_X + cos(eyeLD_ctrl_angle1) * eyeLD_ctrl_Radius1; // Lower left control point X
+  let eyeLD_ctrl_Y1 = eyeLStart_Y + sin(eyeLD_ctrl_angle1) * eyeLD_ctrl_Radius1; // Lower left control point Y
+  let eyeLD_ctrl_X2 = eyeLD_ed_X + cos(eyeLD_ctrl_angle2) * eyeLD_ctrl_Radius2; // Bottom left control point X
+  let eyeLD_ctrl_Y2 = eyeLD_ed_Y + sin(eyeLD_ctrl_angle2) * eyeLD_ctrl_Radius2; // Bottom left control point Y
+  let eyeLD_ctrl_X3 = eyeLD_ed_X + cos(eyeLD_ctrl_angle3) * eyeLD_ctrl_Radius2; // Bottom right control point X
+  let eyeLD_ctrl_Y3 = eyeLD_ed_Y + sin(eyeLD_ctrl_angle3) * eyeLD_ctrl_Radius2; // Bottom right control point Y
+  let eyeLD_ctrl_X4 = eyeLEnd_X + cos(eyeLD_ctrl_angle4) * eyeLD_ctrl_Radius1; // Lower right control point X
+  let eyeLD_ctrl_Y4 = eyeLEnd_Y + sin(eyeLD_ctrl_angle4) * eyeLD_ctrl_Radius1; // Lower right control point Y
+
   beginShape();
   vertex(eyeLStart_X, eyeLStart_Y);
   bezierVertex(eyeLT_ctrl_X1, eyeLT_ctrl_Y1, eyeLT_ctrl_X2, eyeLT_ctrl_Y2, eyeLT_ed_X, eyeLT_ed_Y);
   bezierVertex(eyeLT_ctrl_X3, eyeLT_ctrl_Y3, eyeLT_ctrl_X4, eyeLT_ctrl_Y4, eyeLEnd_X, eyeLEnd_Y);
+  bezierVertex(eyeLD_ctrl_X4, eyeLD_ctrl_Y4, eyeLD_ctrl_X3, eyeLD_ctrl_Y3, eyeLD_ed_X, eyeLD_ed_Y);
+  bezierVertex(eyeLD_ctrl_X2, eyeLD_ctrl_Y2, eyeLD_ctrl_X1, eyeLD_ctrl_Y1, eyeLStart_X, eyeLStart_Y);
   endShape();
 
+  /////////////////////////////////////////
+   ////// Left eye
+ let eyeRStart_X = eye_width;
+ let eyeRStart_Y = -0.5;
+ let eyeREnd_X = 1;
+ let eyeREnd_Y = 0;
+
+ let eyeRT_ed_X = eye_width-1.5;
+ let eyeRT_ed_Y = -eye_width+1; // Left eye top
+ let eyeRD_ed_X = eye_width;
+ let eyeRD_ed_Y = 2; // Left eye bottom
+ 
+ 
+ 
+ // eyeRT_ctrl_angle1 is the angles of upper control lines (above middle line of face)
+ // eyeRD_ctrl_angle1 is the angles of top control lines
+ let eyeRT_ctrl_angle1 = -130;
+ let eyeRT_ctrl_angle2 = 0;
+ let eyeRT_ctrl_angle3 = 180;
+ let eyeRT_ctrl_angle4 = -100;
+ let eyeRD_ctrl_angle1 = 40;
+ let eyeRD_ctrl_angle2 = 0;
+ let eyeRD_ctrl_angle3 = -180;
+ let eyeRD_ctrl_angle4 = 80;
+ let eyeRT_ctrl_Radius1 = 1; // Upper cheek control handle length
+ let eyeRT_ctrl_Radius2 = 1.1; // Top head control handle length
+ 
+ let eyeRT_ctrl_X1 = eyeRStart_X + cos(eyeRT_ctrl_angle1) * eyeRT_ctrl_Radius1; // Upper left control point X
+ let eyeRT_ctrl_Y1 = eyeRStart_Y + sin(eyeRT_ctrl_angle1) * eyeRT_ctrl_Radius1; // Upper left control point Y
+ let eyeRT_ctrl_X2 = eyeRT_ed_X + cos(eyeRT_ctrl_angle2) * eyeRT_ctrl_Radius2; // Top left control point X
+ let eyeRT_ctrl_Y2 = eyeRT_ed_Y + sin(eyeRT_ctrl_angle2) * eyeRT_ctrl_Radius2; // Top left control point Y
+ let eyeRT_ctrl_X3 = eyeRT_ed_X + cos(eyeRT_ctrl_angle3) * eyeRT_ctrl_Radius2; // Top right control point X
+ let eyeRT_ctrl_Y3 = eyeRT_ed_Y + sin(eyeRT_ctrl_angle3) * eyeRT_ctrl_Radius2; // Top right control point Y
+ let eyeRT_ctrl_X4 = eyeREnd_X + cos(eyeRT_ctrl_angle4) * eyeRT_ctrl_Radius1; // Upper right control point X
+ let eyeRT_ctrl_Y4 = eyeREnd_Y + sin(eyeRT_ctrl_angle4) * eyeRT_ctrl_Radius1; // Upper right control point Y
+
+ let eyeRD_ctrl_Radius1 = 1.5; // Cheek control handle length
+ let eyeRD_ctrl_Radius2 = 1; // Jaw control handle length
+ 
+ let eyeRD_ctrl_X1 = eyeRStart_X + cos(eyeRD_ctrl_angle1) * eyeRD_ctrl_Radius1; // Lower left control point X
+ let eyeRD_ctrl_Y1 = eyeRStart_Y + sin(eyeRD_ctrl_angle1) * eyeRD_ctrl_Radius1; // Lower left control point Y
+ let eyeRD_ctrl_X2 = eyeRD_ed_X + cos(eyeRD_ctrl_angle2) * eyeRD_ctrl_Radius2; // Bottom left control point X
+ let eyeRD_ctrl_Y2 = eyeRD_ed_Y + sin(eyeRD_ctrl_angle2) * eyeRD_ctrl_Radius2; // Bottom left control point Y
+ let eyeRD_ctrl_X3 = eyeRD_ed_X + cos(eyeRD_ctrl_angle3) * eyeRD_ctrl_Radius2; // Bottom right control point X
+ let eyeRD_ctrl_Y3 = eyeRD_ed_Y + sin(eyeRD_ctrl_angle3) * eyeRD_ctrl_Radius2; // Bottom right control point Y
+ let eyeRD_ctrl_X4 = eyeREnd_X + cos(eyeRD_ctrl_angle4) * eyeRD_ctrl_Radius1; // Lower right control point X
+ let eyeRD_ctrl_Y4 = eyeREnd_Y + sin(eyeRD_ctrl_angle4) * eyeRD_ctrl_Radius1; // Lower right control point Y
+
+ beginShape();
+ vertex(eyeRStart_X, eyeRStart_Y);
+ bezierVertex(eyeRT_ctrl_X1, eyeRT_ctrl_Y1, eyeRT_ctrl_X2, eyeRT_ctrl_Y2, eyeRT_ed_X, eyeRT_ed_Y);
+ bezierVertex(eyeRT_ctrl_X3, eyeRT_ctrl_Y3, eyeRT_ctrl_X4, eyeRT_ctrl_Y4, eyeREnd_X, eyeREnd_Y);
+ bezierVertex(eyeRD_ctrl_X4, eyeRD_ctrl_Y4, eyeRD_ctrl_X3, eyeRD_ctrl_Y3, eyeRD_ed_X, eyeRD_ed_Y);
+ bezierVertex(eyeRD_ctrl_X2, eyeRD_ctrl_Y2, eyeRD_ctrl_X1, eyeRD_ctrl_Y1, eyeRStart_X, eyeRStart_Y);
+ endShape();
+
+ /////////////////////////////////////////
+  // Draw Control lines
+  stroke(255,0,0);
+  strokeWeight(0.1);
+  // Upper bezier control lines
+  // line(eyeLStart_X, eyeLStart_Y, eyeLT_ctrl_X1, eyeLT_ctrl_Y1);
+  // line(eyeLT_ctrl_X2, eyeLT_ctrl_Y2, eyeLT_ed_X, eyeLT_ed_Y);
+  // line(eyeLT_ed_X, eyeLT_ed_Y, eyeLT_ctrl_X3, eyeLT_ctrl_Y3);
+  // line(eyeLT_ctrl_X4, eyeLT_ctrl_Y4, eyeLEnd_X, eyeLEnd_Y);
+  // line(eyeLEnd_X, eyeLEnd_Y, eyeLD_ctrl_X4, eyeLD_ctrl_Y4);
+  // line(eyeLD_ctrl_X3, eyeLD_ctrl_Y3, eyeLD_ed_X, eyeLD_ed_Y);
+  // line(eyeLD_ed_X, eyeLD_ed_Y, eyeLD_ctrl_X2, eyeLD_ctrl_Y2);
+  // line(eyeLD_ctrl_X1, eyeLD_ctrl_Y1, eyeLStart_X, eyeLStart_Y);
+
+  // line(eyeRStart_X, eyeRStart_Y, eyeRT_ctrl_X1, eyeRT_ctrl_Y1);
+  // line(eyeRT_ctrl_X2, eyeRT_ctrl_Y2, eyeRT_ed_X, eyeRT_ed_Y);
+  // line(eyeRT_ed_X, eyeRT_ed_Y, eyeRT_ctrl_X3, eyeRT_ctrl_Y3);
+  // line(eyeRT_ctrl_X4, eyeRT_ctrl_Y4, eyeREnd_X, eyeREnd_Y);
+  // line(eyeREnd_X, eyeREnd_Y, eyeRD_ctrl_X4, eyeRD_ctrl_Y4);
+  // line(eyeRD_ctrl_X3, eyeRD_ctrl_Y3, eyeRD_ed_X, eyeRD_ed_Y);
+  // line(eyeRD_ed_X, eyeRD_ed_Y, eyeRD_ctrl_X2, eyeRD_ctrl_Y2);
+  // line(eyeRD_ctrl_X1, eyeRD_ctrl_Y1, eyeRStart_X, eyeRStart_Y);
 }
 
 
