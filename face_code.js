@@ -330,9 +330,9 @@ function nose(){
   let noseEnd_Y = 2.5;
 
   let UN_ed_X = 0;
-  let UN_ed_Y = nose_width+0.5; // Top head height
+  let UN_ed_Y = nose_width+0.5; // Top nose height
   let LN_ed_X = 0;
-  let LN_ed_Y = nose_width+2.5; // Jaw height
+  let LN_ed_Y = nose_width+2.5; // Bottom nose height
   
   
   // Upper half of face
@@ -363,7 +363,7 @@ function nose(){
   // cheek_angle is the angles of lower control lines (below middle line of face)
   // jaw_angle is the angles of bottom control lines
   LNL_angle = 0;
-  DNL_angle = 270;
+  DNL_angle = -90;
   let LN_ctrl_Radius1 = nose_width/2; // Cheek control handle length
   let LN_ctrl_Radius2 = nose_width/2; // Jaw control handle length
   
@@ -371,8 +371,8 @@ function nose(){
   let LN_ctrl_Y1 = noseStart_Y + sin(LNL_angle) * LN_ctrl_Radius1; // Lower left control point Y
   let LN_ctrl_X2 = LN_ed_X + cos(DNL_angle) * LN_ctrl_Radius2; // Bottom left control point X
   let LN_ctrl_Y2 = LN_ed_Y + sin(DNL_angle) * LN_ctrl_Radius2; // Bottom left control point Y
-  let LN_ctrl_X3 = LN_ed_X + cos(DNL_angle-360) * LN_ctrl_Radius2; // Bottom right control point X
-  let LN_ctrl_Y3 = LN_ed_Y + sin(DNL_angle-360) * LN_ctrl_Radius2; // Bottom right control point Y
+  let LN_ctrl_X3 = LN_ed_X + cos(-180-DNL_angle) * LN_ctrl_Radius2; // Bottom right control point X
+  let LN_ctrl_Y3 = LN_ed_Y + sin(-180-DNL_angle) * LN_ctrl_Radius2; // Bottom right control point Y
   let LN_ctrl_X4 = noseEnd_X + cos(180-LNL_angle) * LN_ctrl_Radius1; // Lower right control point X
   let LN_ctrl_Y4 = noseEnd_Y + sin(180-LNL_angle) * LN_ctrl_Radius1; // Lower right control point Y
 
@@ -382,7 +382,17 @@ function nose(){
   bezierVertex(LN_ctrl_X3, LN_ctrl_Y3, LN_ctrl_X4, LN_ctrl_Y4, noseEnd_X, noseEnd_Y);
   endShape();
 
+  push();
+  fill(255,0,0);
+  beginShape();
+  vertex(-1, 3.5);
+  bezierVertex(-1, 5, 1, 5, 1, 3.5);
+  endShape();
+  fill(255);
+  bezier(LN_ed_X, LN_ed_Y, 0, 4, -2, 4, -2, 3);
+  bezier(LN_ed_X, LN_ed_Y, 0, 4, 2, 4, 2, 3);
   
+  pop();
 }
 
 
