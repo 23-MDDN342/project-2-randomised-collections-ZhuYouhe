@@ -20,7 +20,7 @@
 // LF = Lower Face
 
 function myFace(topHead_angle, upperCheek_angle, MF_width, 
-                cheek_angle, jaw_angle, 
+                cheek_angle, jaw_angle, eye_width, 
                 nose_width, nose_height, 
                 mouth_width, mouth_height, colorValue){
   angleMode(DEGREES);
@@ -35,6 +35,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   let DarkBrown = color('#8C4E03');
 
   let furColor = [Black, Gray, Brown, DarkBrown];
+  // stroke(furColor[colorValue]);
   
   push();
   fill(furColor[colorValue]);
@@ -45,11 +46,8 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   
   push();
   fill(furColor[colorValue]);
-  eyes();
+  eyes(eye_width);
   pop();
-
-  ellipse(-2,-0.5,0.5);
-  ellipse(2,-0.5,0.5);
 
   push();
   fill(furColor[colorValue]);
@@ -194,8 +192,8 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   ///////////////////////////////////////////
 }
 
-function eyes(){
-  let eye_width = 3;
+function eyes(eye_width){
+  // let eye_width = 3;
 
   ////// Left eye
   let eyeLStart_X = -eye_width;
@@ -204,7 +202,7 @@ function eyes(){
   let eyeLEnd_Y = 0;
 
   let eyeLT_ed_X = -eye_width+1.5;
-  let eyeLT_ed_Y = -eye_width+1; // Left eye top
+  let eyeLT_ed_Y = -eye_width+0.5; // Left eye top
   let eyeLD_ed_X = -eye_width;
   let eyeLD_ed_Y = 2; // Left eye bottom
   
@@ -260,7 +258,7 @@ function eyes(){
  let eyeREnd_Y = 0;
 
  let eyeRT_ed_X = eye_width-1.5;
- let eyeRT_ed_Y = -eye_width+1; // Left eye top
+ let eyeRT_ed_Y = -eye_width+0.5; // Left eye top
  let eyeRD_ed_X = eye_width;
  let eyeRD_ed_Y = 2; // Left eye bottom
  
@@ -309,6 +307,18 @@ function eyes(){
  endShape();
 
  /////////////////////////////////////////
+
+  // Draw eye balls
+  push();
+  fill(255);
+  ellipse(-2,-0.5,eye_width*0.2);
+  ellipse(2,-0.5,eye_width*0.2);
+  fill(0);
+  ellipse(-1.9,-0.5,eye_width*0.12);
+  ellipse(1.9,-0.5,eye_width*0.12);
+  pop();
+
+
   // Draw Control lines
   stroke(255,0,0);
   strokeWeight(0.1);

@@ -95,9 +95,10 @@ function draw () {
   if (mode == '1') {
     let topHead_angle = map(s1, 0, 100, 175, 200);
     let upperCheek_angle = map(s2, 0, 100, -30, -70);
-    let MF_width = map(s3, 0, 100, 5, 7);
+    let MF_width = map(s3, 0, 100, 5.5, 6.8);
     let cheek_angle = map(s4, 0, 100, -5, 35);
     let jaw_angle = map(s5, 0, 100, -10, 30);
+    let eye_width = map(s7, 0, 100, 3, 4.5);
     let nose_width = map(s8, 0, 100, 0.5, 1.7);
     let nose_height = map(s9, 0, 100, 1, 2.2);
     let mouth_width = map(s10, 0, 100, 0.5, 1.4);
@@ -105,7 +106,7 @@ function draw () {
     let colorValue = int(map(s12, 0, 100, 0, 3));
 
     myFace(topHead_angle, upperCheek_angle, MF_width, 
-          cheek_angle, jaw_angle, 
+          cheek_angle, jaw_angle, eye_width, 
           nose_width, nose_height, 
           mouth_width, mouth_height, 
           colorValue);
