@@ -64,6 +64,10 @@ function draw () {
         let MF_width = random(5, 7);
         let cheek_angle = random(-5,35);
         let jaw_angle = random(-10,30);
+        let nose_width = random(0.5, 1.7);
+        let nose_height = random(1, 2.2);
+        let mouth_width = random(0.5, 1.4);
+        let mouth_height = random(4, 7);
 
         // if(is_cyclops < 10) {
         //   eye_value = 1;
@@ -84,7 +88,10 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
+        myFace(topHead_angle, upperCheek_angle, MF_width, 
+                cheek_angle, jaw_angle, 
+                nose_width, nose_height, 
+                mouth_width, mouth_height);
         pop();
       
     }

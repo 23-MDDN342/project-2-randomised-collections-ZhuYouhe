@@ -7,6 +7,7 @@ const canvasHeight = 500;
 const bg_color = [71, 222, 219];
 let slider1, slider2, slider3, slider4, slider5;
 let slider6, slider7, slider8, slider9, slider10;
+let slider11, slider12;
 let faceSelector;
 let faceGuideCheckbox;
 
@@ -27,6 +28,8 @@ function setup () {
   slider8 = createSlider(0, 100, 50);
   slider9 = createSlider(0, 100, 50);
   slider10 = createSlider(0, 100, 50);
+  slider11 = createSlider(0, 100, 50);
+  slider12 = createSlider(0, 100, 50);
 
   slider1.parent('slider1Container');
   slider2.parent('slider2Container');
@@ -38,6 +41,8 @@ function setup () {
   slider8.parent('slider8Container');
   slider9.parent('slider9Container');
   slider10.parent('slider10Container');
+  slider11.parent('slider11Container');
+  slider12.parent('slider12Container');
 
   faceGuideCheckbox = createCheckbox('', true);
   faceGuideCheckbox.parent('checkbox1Container');
@@ -70,6 +75,8 @@ function draw () {
   let s8 = slider8.value();
   let s9 = slider9.value();
   let s10 = slider10.value();
+  let s11 = slider11.value();
+  let s12 = slider12.value();
 
   let show_face_guide = faceGuideCheckbox.checked();
 
@@ -91,8 +98,15 @@ function draw () {
     let MF_width = map(s3, 0, 100, 5, 7);
     let cheek_angle = map(s4, 0, 100, -5, 35);
     let jaw_angle = map(s5, 0, 100, -10, 30);
+    let nose_width = map(s8, 0, 100, 0.5, 1.7);
+    let nose_height = map(s9, 0, 100, 1, 2.2);
+    let mouth_width = map(s10, 0, 100, 0.5, 1.4);
+    let mouth_height = map(s11, 0, 100, 4, 7);
 
-    myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
+    myFace(topHead_angle, upperCheek_angle, MF_width, 
+          cheek_angle, jaw_angle, 
+          nose_width, nose_height, 
+          mouth_width, mouth_height);
   }
 
   if (mode == '2') {

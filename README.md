@@ -3,4 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Eyes have been drawn. Lots of paras are used for the eyes and they are difficult to control. I'll try to make them simple, like only 2 or 3 types of shape.
+>Nose and mouth are drew and parameterized. Both are in one function and the widths and heights can be changed via sliders. Next I will make the eyes and ears changing with discrete variables.

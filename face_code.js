@@ -19,7 +19,10 @@
 // MF = Middle line of Face
 // LF = Lower Face
 
-function myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle){
+function myFace(topHead_angle, upperCheek_angle, MF_width, 
+                cheek_angle, jaw_angle, 
+                nose_width, nose_height, 
+                mouth_width, mouth_height){
   angleMode(DEGREES);
   rectMode(CENTER);
   strokeCap(ROUND);
@@ -43,7 +46,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angl
 
   push();
   fill(0);
-  nose();
+  nose(nose_width, nose_height, mouth_width, mouth_height);
   pop();
 
 }
@@ -322,17 +325,18 @@ function eyes(){
   // line(eyeRD_ctrl_X1, eyeRD_ctrl_Y1, eyeRStart_X, eyeRStart_Y);
 }
 
-function nose(){
-  let nose_width = 1;
+function nose(nose_width, nose_height, mouth_width, mouth_height){
+  // let mouth_width = 1;
+  // let mouth_height = 5;
   let noseStart_X = -nose_width;
   let noseStart_Y = 2.5;
   let noseEnd_X = nose_width;
   let noseEnd_Y = 2.5;
 
   let UN_ed_X = 0;
-  let UN_ed_Y = nose_width+0.5; // Top nose height
+  let UN_ed_Y = nose_height; // Top nose height
   let LN_ed_X = 0;
-  let LN_ed_Y = nose_width+2.5; // Bottom nose height
+  let LN_ed_Y = 3.5; // Bottom nose height
   
   
   // Upper half of face
@@ -382,15 +386,28 @@ function nose(){
   bezierVertex(LN_ctrl_X3, LN_ctrl_Y3, LN_ctrl_X4, LN_ctrl_Y4, noseEnd_X, noseEnd_Y);
   endShape();
 
+  // Draw mouth
   push();
   fill(255,0,0);
   beginShape();
-  vertex(-1, 3.5);
-  bezierVertex(-1, 5, 1, 5, 1, 3.5);
+  vertex(-mouth_width, LN_ed_Y);
+  bezierVertex(-mouth_width, mouth_height, mouth_width, mouth_height, mouth_width, LN_ed_Y);
   endShape();
+
+  // Draw upper lip left
   fill(255);
-  bezier(LN_ed_X, LN_ed_Y, 0, 4, -2, 4, -2, 3);
-  bezier(LN_ed_X, LN_ed_Y, 0, 4, 2, 4, 2, 3);
+  beginShape();
+  vertex(noseStart_X, noseStart_Y);
+  bezierVertex(LN_ctrl_X1, LN_ctrl_Y1, LN_ctrl_X2, LN_ctrl_Y2, LN_ed_X, LN_ed_Y);
+  bezierVertex(0, nose_height+2.5, -nose_width-1, nose_height+2.5, -nose_width-1, nose_height+1.5);
+  endShape();
+
+  // Draw upper lip right
+  beginShape();
+  vertex(noseEnd_X, noseEnd_Y);
+  bezierVertex(LN_ctrl_X4, LN_ctrl_Y4, LN_ctrl_X3, LN_ctrl_Y3, LN_ed_X, LN_ed_Y);
+  bezierVertex(0, nose_height+2.5, nose_width+1, nose_height+2.5, nose_width+1, nose_height+1.5);
+  endShape();
   
   pop();
 }
