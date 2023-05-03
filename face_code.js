@@ -50,7 +50,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   ellipse(0, 0, 20);
   pop();
 
-  // Draw ears color
+  // Draw ears and color
   push();
   fill(furColor[colorValue]);
   ears(earType);
@@ -59,16 +59,16 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   // Draw main face
   faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
   
-  // Draw eyes color
+  // Draw eyes and color
   push();
   fill(furColor[colorValue]);
   eyes(eye_width);
   pop();
 
-  // Draw nose color
+  // Draw nose and color
   push();
   fill(furColor[colorValue]);
-  nose(nose_width, nose_height, mouth_width, mouth_height);
+  nose(nose_width, nose_height, mouth_width, mouth_height, furColor, colorValue);
   pop();
   
 }
@@ -358,7 +358,15 @@ function eyes(eye_width){
   // line(eyeRD_ctrl_X1, eyeRD_ctrl_Y1, eyeRStart_X, eyeRStart_Y);
 }
 
-function nose(nose_width, nose_height, mouth_width, mouth_height){
+function nose(nose_width, nose_height, mouth_width, mouth_height, furColor, colorValue){
+  // Fill the middle line gap
+  // Sometimes the gap will appear as the upper and lower nose are drew seperately
+  // The 'furColor' and 'colorValue' were brought here to match the color
+  push();
+  stroke(furColor[colorValue]);
+  line(-nose_width, 2.5, nose_width, 2.5);
+  pop();
+
   let noseStart_X = -nose_width;
   let noseStart_Y = 2.5;
   let noseEnd_X = nose_width;
@@ -441,70 +449,41 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-function orangeAlienFace(tilt_value, eye_value, mouth_value) {
-  const bg_color3 = [71, 222, 219];
-  const fg_color3 = [255, 93, 35];
+// ///////////////////////////////////////////////////////////////////////////////////////////////////
+// function orangeAlienFace(tilt_value, eye_value, mouth_value) {
+//   const bg_color3 = [71, 222, 219];
+//   const fg_color3 = [255, 93, 35];
 
-  let headSize = 20
-  let eyeSize = 5;
-  let centerX = 0;
-  let Iy = -4
-  let distactBetweenEyes = 5
-  let MouthDrop = 7
+//   let headSize = 20
+//   let eyeSize = 5;
+//   let centerX = 0;
+//   let Iy = -4
+//   let distactBetweenEyes = 5
+//   let MouthDrop = 7
   
-  // rotation in degrees
-  angleMode(DEGREES);
-  rotate(tilt_value);
+//   // rotation in degrees
+//   angleMode(DEGREES);
+//   rotate(tilt_value);
 
- // head
-  noStroke();
-  fill(fg_color3);
-  ellipse(centerX, 0, headSize, headSize);
+//  // head
+//   noStroke();
+//   fill(fg_color3);
+//   ellipse(centerX, 0, headSize, headSize);
 
-  // 2 traditonal eyes
-  if (eye_value === 1 || eye_value == 3) {
-    fill(bg_color3);
-    ellipse(centerX, Iy, eyeSize-1,eyeSize);
+//   // 2 traditonal eyes
+//   if (eye_value === 1 || eye_value == 3) {
+//     fill(bg_color3);
+//     ellipse(centerX, Iy, eyeSize-1,eyeSize);
    
-  }
-// middle eye
-  if (eye_value >= 2) {
-    fill(bg_color3);
-    ellipse(centerX - distactBetweenEyes, Iy, eyeSize);
-    ellipse(centerX + distactBetweenEyes, Iy, eyeSize );
-  }
+//   }
+// // middle eye
+//   if (eye_value >= 2) {
+//     fill(bg_color3);
+//     ellipse(centerX - distactBetweenEyes, Iy, eyeSize);
+//     ellipse(centerX + distactBetweenEyes, Iy, eyeSize );
+//   }
 
-  // mouth
-  fill(bg_color3);
-  ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
-}
-
-function simplePurpleFace() {
-  fill(234, 122, 244);
-  noStroke();
-  // head
-  ellipse(0, 0, 20);
-  // eyes
-  fill(255, 217, 114);
-  ellipse(-3, -3, 3);
-  ellipse( 3, -3, 3);
-}
-
-/*
- * thinness_value ranges from 0-100 and indicates how thin the face is
- */
-function blockyFace(thinness_value) {
-  // head
-  noStroke();
-  fill(134, 19, 136);
-  let head_width = map(thinness_value, 0, 100, 8, 20);
-  rect(-head_width/2, -9, head_width, 18);
- 
-
-  // eyes
-  fill(234, 122, 244);
-  ellipse(-2, -4, 1);
-  ellipse( 2, -4, 1);
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////
+//   // mouth
+//   fill(bg_color3);
+//   ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
+// }

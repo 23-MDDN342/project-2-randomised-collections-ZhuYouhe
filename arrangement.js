@@ -92,7 +92,7 @@ function draw () {
         translate(x, y);
         scale(arcRadius/7);
         noFill();
-        strokeWeight(6);
+        strokeWeight(4);
         arc(0,0,120,120,90,91);
         arc(0,0,120,120,100,150);
         arc(0,0,120,120,160,170);
@@ -105,7 +105,7 @@ function draw () {
         scale(arcRadius/7);
         noFill();
         stroke(255);
-        strokeWeight(5);
+        strokeWeight(3);
         arc(0,0,120,120,90,91);
         arc(0,0,120,120,100,150);
         arc(0,0,120,120,160,170);

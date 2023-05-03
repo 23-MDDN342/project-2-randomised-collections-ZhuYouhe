@@ -49,9 +49,7 @@ function setup () {
 
   faceSelector = createSelect();
   faceSelector.option('1');
-  faceSelector.option('2');
-  faceSelector.option('3');
-  faceSelector.option('4');
+  faceSelector.option('2')
   faceSelector.value('1');
   faceSelector.parent('selector1Container');
 }
@@ -120,14 +118,6 @@ function draw () {
    let eye_value = int(map(s3, 0, 100, 1, 3));
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
-
-  if (mode == '3') {
-     // let slider value 1 indicate thinness
-     blockyFace(s1);
-  }
-  if (mode == '4') {
-    simplePurpleFace();
-  }
  
   pop();
 
@@ -143,7 +133,6 @@ function draw () {
     line(-11,   0,-10,  0);
     line( 11,   0, 10,  0);
   }
-
   pop();
 
   pop();
