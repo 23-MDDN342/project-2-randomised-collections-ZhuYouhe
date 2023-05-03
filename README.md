@@ -3,4 +3,6 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Eyes shape changing added, as well as the eyeballs. I think the panda looks cute now.
+>Drwe three types of ears in discrete variables.
+Adjusted the mouth start points for not popping up.
+Optimized the random paras.

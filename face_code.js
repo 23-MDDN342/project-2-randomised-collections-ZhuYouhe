@@ -20,7 +20,7 @@
 // LF = Lower Face
 
 function myFace(topHead_angle, upperCheek_angle, MF_width, 
-                cheek_angle, jaw_angle, eye_width, 
+                cheek_angle, jaw_angle, earType, eye_width, 
                 nose_width, nose_height, 
                 mouth_width, mouth_height, colorValue){
   angleMode(DEGREES);
@@ -39,7 +39,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   
   push();
   fill(furColor[colorValue]);
-  ears();
+  ears(earType);
   pop();
   
   faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
@@ -56,15 +56,29 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
 
 }
 
-function ears(){
-
-
-
+function ears(earType){
+if(earType == 1){
 // Left ear
+beginShape();
+vertex(-5, -2);
+bezierVertex(-5, -3, -6, -3, -6.5, -3.5);
+bezierVertex(-8.5, -5.5, -5, -9, -3.8, -7);
+bezierVertex(-3.2, -6, -3.5, -5, -2.5, -4.5);
+endShape();
+
+// Right ear
+beginShape();
+vertex(5, -2);
+bezierVertex(5, -3, 6, -3, 6.5, -3.5);
+bezierVertex(8.5, -5.5, 5, -9, 3.8, -7);
+bezierVertex(3.2, -6, 3.5, -5, 2.5, -4.5);
+endShape();
+} else if(earType == 2){
+  // Left ear
 beginShape();
 vertex(-5, -2.5);
 bezierVertex(-5, -3, -5, -4, -6.5, -4);
-bezierVertex(-8.5, -5.5, -5, -9, -3.8, -7);
+bezierVertex(-9.5, -4.5, -4, -10, -3.9, -7);
 bezierVertex(-4, -6, -3.5, -5, -2.5, -4.5);
 endShape();
 
@@ -72,19 +86,44 @@ endShape();
 beginShape();
 vertex(5, -2.5);
 bezierVertex(5, -3, 5, -4, 6.5, -4);
-bezierVertex(8.5, -5.5, 5, -9, 3.8, -7);
+bezierVertex(9.5, -4.5, 4, -10, 3.9, -7);
 bezierVertex(4, -6, 3.5, -5, 2.5, -4.5);
 endShape();
+} else if(earType == 3){
+// Left ear
+beginShape();
+vertex(-5, -2);
+bezierVertex(-5, -2.5, -6, -3, -6.5, -3.5);
+bezierVertex(-8.5, -5.5, -6, -8.5, -3.8, -7);
+bezierVertex(-2.5, -6, -2.5, -5, -2, -4.5);
+endShape();
+
+// Right ear
+beginShape();
+vertex(5, -2);
+bezierVertex(5, -2.5, 6, -3, 6.5, -3.5);
+bezierVertex(8.5, -5.5, 6, -8.5, 3.8, -7);
+bezierVertex(2.5, -6, 2.5, -5, 2, -4.5);
+endShape();
+}
+
+///////////////////////
   
+
+///////////////////////
+
+
+///////////////////////
+
 push();
   stroke(255,0,0);
   strokeWeight(0.1);
-  line(-5, -2.5, -5, -3);
-  line(-5, -4, -6.5, -4);
-  line(-6.5, -4, -8.5, -5.5);
-  line(-5, -9, -3.8, -7);
-  line(-3.8, -7, -4, -6);
-  line(-3.5, -5, -2.5, -4.5);
+  // line(-5, -3, -5, -4);
+  // line(-5, -4, -6.5, -4);
+  // line(-6.5, -4, -8.5, -5.5);
+  // line(-5, -9, -3.8, -7);
+  // line(-3.8, -7, -4, -6);
+  // line(-3.5, -5, -2.5, -4.5);
   pop();
 }
 
@@ -407,8 +446,8 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
   push();
   fill('#F25790');
   beginShape();
-  vertex(-mouth_width, LN_ed_Y);
-  bezierVertex(-mouth_width, mouth_height, mouth_width, mouth_height, mouth_width, LN_ed_Y);
+  vertex(-mouth_width, LN_ed_Y-0.15);
+  bezierVertex(-mouth_width, mouth_height, mouth_width, mouth_height, mouth_width, LN_ed_Y-0.15);
   endShape();
 
   // Draw upper lip left
