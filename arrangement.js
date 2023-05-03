@@ -68,8 +68,9 @@ function draw () {
 
         push();
         translate(x, y);
-        // scale(7);
+        rotate(random(-w/2, w/2));
         scale(arcRadius);
+
         let spinnerValue = random(0, 100);
         if(spinnerValue < 60){
           colorValue = 0;
@@ -78,6 +79,7 @@ function draw () {
           colorValue = int(random(1, 3.5));
           earType = int(random(2.1, 3.9));
         }
+
         myFace(topHead_angle, upperCheek_angle, MF_width, 
                 cheek_angle, jaw_angle, earType, eye_width, 
                 nose_width, nose_height, 
@@ -85,6 +87,7 @@ function draw () {
                 colorValue);
                 pop();
 
+        // Draw reflections of the circle
         push();
         translate(x, y);
         scale(arcRadius/7);
@@ -93,7 +96,10 @@ function draw () {
         arc(0,0,120,120,90,91);
         arc(0,0,120,120,100,150);
         arc(0,0,120,120,160,170);
+        arc(0,0,120,120,240,242);
+        arc(0,0,120,120,250,265);
         pop();
+
         push();
         translate(x, y);
         scale(arcRadius/7);
@@ -103,6 +109,8 @@ function draw () {
         arc(0,0,120,120,90,91);
         arc(0,0,120,120,100,150);
         arc(0,0,120,120,160,170);
+        arc(0,0,120,120,240,242);
+        arc(0,0,120,120,250,265);
         pop();
         
     }

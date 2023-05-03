@@ -7,17 +7,18 @@
  * These functions are used by your final arrangement of faces as well as the face editor.
  */
 
-
-/*
- * tilt_value is in degrees
- * eye_value is an integer number of eyes: either 0, 1, 2, or 3
- * mouth_value is how open the mouth is and should generally range from 0.5 to 10
- */
-
-// Acronym:
-// UF = Upper Face
-// MF = Middle line of Face
-// LF = Lower Face
+// 01. topHead_angle is the curve of forehead
+// 02. upperCheek_angle is the width of upper head
+// 03. MF_width is the main shape/size of the face
+// 04. cheek_angle is the curve of cheek
+// 05. jaw_angle is the curve of jaw
+// 06. earType for switching 3 types of ears
+// 07. eye_width is the shape/size of eyes
+// 08. nose_width is the width of nose & upper lip
+// 09. nose_height is the height of nose & upper lip
+// 10. mouth_width is the width of lower lip
+// 11. mouth_height is the height of lower lip
+// 12. colorValue for changing fur color
 
 function myFace(topHead_angle, upperCheek_angle, MF_width, 
                 cheek_angle, jaw_angle, earType, eye_width, 
@@ -43,24 +44,28 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   let Green3 = color('#6A8C69');
   let circleColor = [Green0, Green1, Green2, Green3];
   
+  // Draw circle background
   push();
-  // noStroke();
   fill(circleColor[colorValue]);
   ellipse(0, 0, 20);
   pop();
 
+  // Draw ears color
   push();
   fill(furColor[colorValue]);
   ears(earType);
   pop();
   
+  // Draw main face
   faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
   
+  // Draw eyes color
   push();
   fill(furColor[colorValue]);
   eyes(eye_width);
   pop();
 
+  // Draw nose color
   push();
   fill(furColor[colorValue]);
   nose(nose_width, nose_height, mouth_width, mouth_height);
@@ -118,37 +123,20 @@ bezierVertex(8.5, -5.5, 6, -8.5, 3.8, -7);
 bezierVertex(2.5, -6, 2.5, -5, 2, -4.5);
 endShape();
 }
-
-///////////////////////
-  
-
-///////////////////////
-
-
-///////////////////////
-
-push();
-  stroke(255,0,0);
-  strokeWeight(0.1);
-  // line(-5, -3, -5, -4);
-  // line(-5, -4, -6.5, -4);
-  // line(-6.5, -4, -8.5, -5.5);
-  // line(-5, -9, -3.8, -7);
-  // line(-3.8, -7, -4, -6);
-  // line(-3.5, -5, -2.5, -4.5);
-  pop();
 }
 
 function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle){
   // Fill the middle line gap
+  // Sometimes the gap will appear as the upper and lower faces are drew seperately
   push();
   stroke(255);
   line(-MF_width, 0, MF_width, 0);
   pop();
   
-  // Define bezier's start and end points
-  // MF_width is the width of the face
-  // MF_width = 6;
+  // Acronym:
+  // UF = Upper Face
+  // MF = Middle line of Face
+  // LF = Lower Face
 
   // Both upper and lower face bezier shapes start from left middle point, and end at right middle point
   let faceStart_X = -MF_width;
@@ -165,8 +153,6 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   // Upper half of face
   // upperCheek_angle is the angles of upper control lines (above middle line of face)
   // topHead_angle is the angles of top control lines
-  // upperCheek_angle = -45;
-  // topHead_angle = 180;
   let UF_ctrl_Radius1 = MF_width-4.5; // Upper cheek control handle length
   let UF_ctrl_Radius2 = 12-MF_width; // Top head control handle length
   
@@ -189,8 +175,6 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   // Lower half of face
   // cheek_angle is the angles of lower control lines (below middle line of face)
   // jaw_angle is the angles of bottom control lines
-  // cheek_angle = 17;
-  // jaw_angle = 20;
   let LF_ctrl_Radius1 = MF_width*0.5; // Cheek control handle length
   let LF_ctrl_Radius2 = MF_width*1.2; // Jaw control handle length
   
@@ -203,31 +187,11 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   let LF_ctrl_X4 = faceEnd_X + cos(cheek_angle) * LF_ctrl_Radius1; // Lower right control point X
   let LF_ctrl_Y4 = faceEnd_Y + sin(cheek_angle) * LF_ctrl_Radius1; // Lower right control point Y
 
-  // Bezier degree
-  // let lowerFaceSize = 0.4;
-
-  // Control points coordinates
-  // let LF_ctrl_X1 = faceStart_X + (LF_ed_X1-4)  * lowerFaceSize;
-  // let LF_ctrl_Y1 = faceStart_Y + (LF_ed_Y1-7)  * lowerFaceSize;
-  // let LF_ctrl_X2 = LF_ed_X1 + (LF_ed_X1 - 8) * lowerFaceSize;
-  // let LF_ctrl_Y2 = LF_ed_Y1 + (LF_ed_Y1 -7) * lowerFaceSize;
-  // let LF_ctrl_X3 = LF_ed_X1 + (faceEnd_X+2)  * lowerFaceSize;
-  // let LF_ctrl_Y3 = LF_ed_Y1 + (faceEnd_Y+1)  * lowerFaceSize;
-  // let LF_ctrl_X4 = faceEnd_X + (faceEnd_X - 2) * lowerFaceSize;
-  // let LF_ctrl_Y4 = faceEnd_Y + (faceEnd_Y +1) * lowerFaceSize;
-
   beginShape();
   vertex(faceStart_X, faceStart_Y);
   bezierVertex(LF_ctrl_X1, LF_ctrl_Y1, LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1);
   bezierVertex(LF_ctrl_X3, LF_ctrl_Y3, LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y);
   endShape();
-
-  // push();
-  // // beginShape();
-  // // vertex(-6, 0);
-  // // bezierVertex(-10, 1, -8, 9, 0, 8);
-  // // bezierVertex(8, 9, 10, 1, 6, 0);
-  // // endShape();
 
   // /////////////////////////////////////////
   // // Draw Control lines
@@ -245,12 +209,10 @@ function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_a
   // line(LF_ed_X1, LF_ed_Y1, LF_ctrl_X3, LF_ctrl_Y3);
   // line(LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y);
   // pop();
-  ///////////////////////////////////////////
+  ////////////////////////////////////////////
 }
 
 function eyes(eye_width){
-  // let eye_width = 3;
-
   ////// Left eye
   let eyeLStart_X = -eye_width;
   let eyeLStart_Y = -0.5;
@@ -307,7 +269,7 @@ function eyes(eye_width){
   endShape();
 
   /////////////////////////////////////////
-   ////// Left eye
+  ////// Right eye
  let eyeRStart_X = eye_width;
  let eyeRStart_Y = -0.5;
  let eyeREnd_X = 1;
@@ -317,8 +279,6 @@ function eyes(eye_width){
  let eyeRT_ed_Y = -eye_width+0.5; // Left eye top
  let eyeRD_ed_X = eye_width;
  let eyeRD_ed_Y = 2; // Left eye bottom
- 
- 
  
  // eyeRT_ctrl_angle1 is the angles of upper control lines (above middle line of face)
  // eyeRD_ctrl_angle1 is the angles of top control lines
@@ -376,8 +336,8 @@ function eyes(eye_width){
 
 
   // Draw Control lines
-  stroke(255,0,0);
-  strokeWeight(0.1);
+  // stroke(255,0,0);
+  // strokeWeight(0.1);
   // Upper bezier control lines
   // line(eyeLStart_X, eyeLStart_Y, eyeLT_ctrl_X1, eyeLT_ctrl_Y1);
   // line(eyeLT_ctrl_X2, eyeLT_ctrl_Y2, eyeLT_ed_X, eyeLT_ed_Y);
@@ -399,8 +359,6 @@ function eyes(eye_width){
 }
 
 function nose(nose_width, nose_height, mouth_width, mouth_height){
-  // let mouth_width = 1;
-  // let mouth_height = 5;
   let noseStart_X = -nose_width;
   let noseStart_Y = 2.5;
   let noseEnd_X = nose_width;
@@ -411,10 +369,7 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
   let LN_ed_X = 0;
   let LN_ed_Y = 3.5; // Bottom nose height
   
-  
-  // Upper half of face
-  // UNL_angle is the angles of upper control lines (above middle line of face)
-  // TNL_angle is the angles of top control lines
+  // Upper half of nose
   UNL_angle = -135;
   TNL_angle = 180;
   let UN_ctrl_Radius1 = nose_width/2; // Upper cheek control handle length
@@ -435,10 +390,7 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
   bezierVertex(UN_ctrl_X3, UN_ctrl_Y3, UN_ctrl_X4, UN_ctrl_Y4, noseEnd_X, noseEnd_Y);
   endShape();
 
-
-  // Lower half of face
-  // cheek_angle is the angles of lower control lines (below middle line of face)
-  // jaw_angle is the angles of bottom control lines
+  // Lower half of nose
   LNL_angle = 0;
   DNL_angle = -90;
   let LN_ctrl_Radius1 = nose_width/2; // Cheek control handle length
@@ -484,7 +436,7 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
   
   pop();
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
