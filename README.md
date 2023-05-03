@@ -3,4 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Update the arrangement page. I've managed to make a random layout. Drew some greenish color circles as the sub-background, because bamboo is green. (Sorry I don't think I have enough time to draw bamboo using Beziers)
+>For this project, I was required to draw some random faces. I started thinking of simple square-shaped faces based on some previous examples, but I ended up not doing that as I saw some panda videos and decided to draw panda face using Bezier curves.
