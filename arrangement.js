@@ -53,12 +53,6 @@ function draw () {
       let y = h/2 + h*i;
       let x = w/2 + w*j;
      
-        // center face
-        // let eye_value = int(random(2,4));
-        // let tilt_value = random(-45, 45);
-        // let mouth_value = random(3,4);
-        // let is_cyclops = random(0, 100);
-
         let topHead_angle = random(170, 210);
         let upperCheek_angle = random(-30, -70);
         let MF_width = random(5, 7);
@@ -68,6 +62,7 @@ function draw () {
         let nose_height = random(1, 2.2);
         let mouth_width = random(0.5, 1.4);
         let mouth_height = random(4, 7);
+        let colorValue = 0;
 
         // if(is_cyclops < 10) {
         //   eye_value = 1;
@@ -83,15 +78,20 @@ function draw () {
         //   jaw_angle = random(15, 25);
         // }
 
-
         push();
         translate(x, y);
         scale(w/25, h/25);
-        
+        let spinnerValue = random(0, 100);
+        if(spinnerValue < 70){
+          colorValue = 0;
+        } else{
+          colorValue = int(random(1, 3));
+        }
         myFace(topHead_angle, upperCheek_angle, MF_width, 
                 cheek_angle, jaw_angle, 
                 nose_width, nose_height, 
-                mouth_width, mouth_height);
+                mouth_width, mouth_height, 
+                colorValue);
         pop();
       
     }

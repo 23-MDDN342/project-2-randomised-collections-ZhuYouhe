@@ -22,22 +22,29 @@
 function myFace(topHead_angle, upperCheek_angle, MF_width, 
                 cheek_angle, jaw_angle, 
                 nose_width, nose_height, 
-                mouth_width, mouth_height){
+                mouth_width, mouth_height, colorValue){
   angleMode(DEGREES);
   rectMode(CENTER);
   strokeCap(ROUND);
   strokeJoin(ROUND);
-  strokeWeight(0.2);
+  strokeWeight(0.1);
+
+  let Black = color('#000000');
+  let Gray = color('#8C8C8C');
+  let Brown = color('#73675C');
+  let DarkBrown = color('#8C4E03');
+
+  let furColor = [Black, Gray, Brown, DarkBrown];
   
   push();
-  fill(0);
+  fill(furColor[colorValue]);
   ears();
   pop();
   
   faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle);
   
   push();
-  fill(0);
+  fill(furColor[colorValue]);
   eyes();
   pop();
 
@@ -45,7 +52,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   ellipse(2,-0.5,0.5);
 
   push();
-  fill(0);
+  fill(furColor[colorValue]);
   nose(nose_width, nose_height, mouth_width, mouth_height);
   pop();
 
@@ -388,7 +395,7 @@ function nose(nose_width, nose_height, mouth_width, mouth_height){
 
   // Draw mouth
   push();
-  fill(255,0,0);
+  fill('#F25790');
   beginShape();
   vertex(-mouth_width, LN_ed_Y);
   bezierVertex(-mouth_width, mouth_height, mouth_width, mouth_height, mouth_width, LN_ed_Y);

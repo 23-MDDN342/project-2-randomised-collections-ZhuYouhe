@@ -3,4 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Nose and mouth are drew and parameterized. Both are in one function and the widths and heights can be changed via sliders. Next I will make the eyes and ears changing with discrete variables.
+>Four color options available.

@@ -29,7 +29,7 @@ function setup () {
   slider9 = createSlider(0, 100, 50);
   slider10 = createSlider(0, 100, 50);
   slider11 = createSlider(0, 100, 50);
-  slider12 = createSlider(0, 100, 50);
+  slider12 = createSlider(0, 100, 0);
 
   slider1.parent('slider1Container');
   slider2.parent('slider2Container');
@@ -102,11 +102,13 @@ function draw () {
     let nose_height = map(s9, 0, 100, 1, 2.2);
     let mouth_width = map(s10, 0, 100, 0.5, 1.4);
     let mouth_height = map(s11, 0, 100, 4, 7);
+    let colorValue = int(map(s12, 0, 100, 0, 3));
 
     myFace(topHead_angle, upperCheek_angle, MF_width, 
           cheek_angle, jaw_angle, 
           nose_width, nose_height, 
-          mouth_width, mouth_height);
+          mouth_width, mouth_height, 
+          colorValue);
   }
 
   if (mode == '2') {
@@ -148,10 +150,6 @@ function draw () {
   push();
   strokeWeight(2);
   stroke(255);
-  // point(288,58);
-  // point(672,58);
-  // point(672,442);
-  // point(288,442);
   let mX = int(map(mouseX-480,-480,480,-25,25));
   let mY = int(map(mouseY-250,-250,250,-13,13));
   
