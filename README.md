@@ -3,6 +3,4 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->Drwe three types of ears in discrete variables.
-Adjusted the mouth start points for not popping up.
-Optimized the random paras.
+>Update the arrangement page. I've managed to make a random layout. Drew some greenish color circles as the sub-background, because bamboo is green. (Sorry I don't think I have enough time to draw bamboo using Beziers)

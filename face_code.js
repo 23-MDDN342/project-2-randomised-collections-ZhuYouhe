@@ -29,14 +29,26 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   strokeJoin(ROUND);
   strokeWeight(0.1);
 
+  // Fur colors
   let Black = color('#000000');
   let Gray = color('#8C8C8C');
   let Brown = color('#73675C');
-  let DarkBrown = color('#8C4E03');
-
+  let DarkBrown = color('#BF7245');
   let furColor = [Black, Gray, Brown, DarkBrown];
-  // stroke(furColor[colorValue]);
+
+  // Background circle colors
+  let Green0 = color('#A0CD60');
+  let Green1 = color('#CEF09D');
+  let Green2 = color('#A8B545');
+  let Green3 = color('#6A8C69');
+  let circleColor = [Green0, Green1, Green2, Green3];
   
+  push();
+  // noStroke();
+  fill(circleColor[colorValue]);
+  ellipse(0, 0, 20);
+  pop();
+
   push();
   fill(furColor[colorValue]);
   ears(earType);
@@ -53,7 +65,7 @@ function myFace(topHead_angle, upperCheek_angle, MF_width,
   fill(furColor[colorValue]);
   nose(nose_width, nose_height, mouth_width, mouth_height);
   pop();
-
+  
 }
 
 function ears(earType){
@@ -128,6 +140,11 @@ push();
 }
 
 function faceShape(topHead_angle, upperCheek_angle, MF_width, cheek_angle, jaw_angle){
+  // Fill the middle line gap
+  push();
+  stroke(255);
+  line(-MF_width, 0, MF_width, 0);
+  pop();
   
   // Define bezier's start and end points
   // MF_width is the width of the face
