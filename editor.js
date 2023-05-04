@@ -5,18 +5,9 @@
 const canvasWidth = 960;
 const canvasHeight = 500;
 const bg_color = ['#FFE3CC'];
-let slider1,
-    slider2,
-    slider3,
-    slider4,
-    slider5;
-let slider6,
-    slider7,
-    slider8,
-    slider9,
-    slider10;
-let slider11,
-    slider12;
+let slider1, slider2, slider3, slider4, slider5;
+let slider6, slider7, slider8, slider9, slider10;
+let slider11, slider12;
 let faceSelector;
 let faceGuideCheckbox;
 
@@ -137,6 +128,7 @@ function draw() {
 
     pop();
 
+    
     push();
     if (show_face_guide) {
         strokeWeight(0.1);

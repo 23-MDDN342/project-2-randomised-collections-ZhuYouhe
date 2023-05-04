@@ -77,10 +77,10 @@ function draw() {
                 earType = int(random(2.1, 3.9));
             }
 
-            // Draw shadow of the circle
+            // Draw under shadow of the circle
             push();
             noFill();
-            stroke(0, 0, 0, 50);
+            stroke(0, 0, 0, 150);
             strokeWeight(2);
             arc(0, 0, 20, 18, -95, 75);
             pop();
@@ -127,6 +127,16 @@ function draw() {
             arc(0, 0, 120, 120, 160, 170);
             arc(0, 0, 120, 120, 240, 242);
             arc(0, 0, 120, 120, 250, 265);
+            pop();
+
+            // Draw top shadow of the circle
+            push();
+            translate(x, y);
+            scale(arcRadius / 7);
+            noFill();
+            stroke(0, 0, 0, 100);
+            strokeWeight(4);
+            arc(0, 0, 136, 136, -95, 75);
             pop();
 
         }

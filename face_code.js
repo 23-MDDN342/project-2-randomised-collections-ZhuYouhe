@@ -84,6 +84,11 @@ function myFace(
 }
 
 function ears(earType) {
+    // Ears have more Bezier lines than other parts of the face, 
+    // so I kept them in absolute numbers to draw three different shapes of ears,
+    // and using weighted Selection to switch between the types.
+    // Also it will make the codes looks tidy and clear.
+
     if (earType == 1) {
         // Left ear
         beginShape();
@@ -230,15 +235,23 @@ function faceShape(
     );
     endShape();
 
-    // ///////////////////////////////////////  Draw Control lines stroke(255,0,0);
-    // strokeWeight(0.1);  Upper bezier control lines line(faceStart_X, faceStart_Y,
-    // UF_ctrl_X1, UF_ctrl_Y1); line(UF_ctrl_X2, UF_ctrl_Y2, UF_ed_X1, UF_ed_Y1);
-    // line(UF_ed_X1, UF_ed_Y1, UF_ctrl_X3, UF_ctrl_Y3); line(UF_ctrl_X4,
-    // UF_ctrl_Y4, faceEnd_X, faceEnd_Y);  Lower bezier control lines
-    // line(faceStart_X, faceStart_Y, LF_ctrl_X1, LF_ctrl_Y1); line(LF_ctrl_X2,
-    // LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1); line(LF_ed_X1, LF_ed_Y1, LF_ctrl_X3,
-    // LF_ctrl_Y3); line(LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y); pop();
-    // //////////////////////////////////////////
+    /////////////////////////////////////////  
+    // Draw Control lines
+    // push();
+    // stroke(255,0,0);
+    // strokeWeight(0.1);  
+    // // Upper bezier control lines 
+    // line(faceStart_X, faceStart_Y, UF_ctrl_X1, UF_ctrl_Y1); 
+    // line(UF_ctrl_X2, UF_ctrl_Y2, UF_ed_X1, UF_ed_Y1);
+    // line(UF_ed_X1, UF_ed_Y1, UF_ctrl_X3, UF_ctrl_Y3); 
+    // line(UF_ctrl_X4, UF_ctrl_Y4, faceEnd_X, faceEnd_Y);  
+    // // Lower bezier control lines
+    // line(faceStart_X, faceStart_Y, LF_ctrl_X1, LF_ctrl_Y1); 
+    // line(LF_ctrl_X2, LF_ctrl_Y2, LF_ed_X1, LF_ed_Y1); 
+    // line(LF_ed_X1, LF_ed_Y1, LF_ctrl_X3, LF_ctrl_Y3); 
+    // line(LF_ctrl_X4, LF_ctrl_Y4, faceEnd_X, faceEnd_Y); 
+    // pop();
+    ///////////////////////////////////////////
 }
 
 function eyes(eye_width) {
@@ -559,18 +572,41 @@ function nose(
 
     pop();
 }
-// ///////////////////////////////////////////////////////////////////////////
-// //////////////////////
-// /////////////////////////////////////////////////////////////////////////////////////////////////
-// function orangeAlienFace(tilt_value, eye_value, mouth_value) {   const
-// bg_color3 = [71, 222, 219];   const fg_color3 = [255, 93, 35];   let headSize
-// = 20   let eyeSize = 5;   let centerX = 0;   let Iy = -4   let
-// distactBetweenEyes = 5   let MouthDrop = 7    rotation in degrees
-// angleMode(DEGREES);   rotate(tilt_value);   head   noStroke();
-// fill(fg_color3);   ellipse(centerX, 0, headSize, headSize);    2 traditonal
-// eyes   if (eye_value === 1 || eye_value == 3) {     fill(bg_color3);
-// ellipse(centerX, Iy, eyeSize-1,eyeSize);   }  middle eye   if (eye_value >=
-// 2) {     fill(bg_color3);     ellipse(centerX - distactBetweenEyes, Iy,
-// eyeSize);     ellipse(centerX + distactBetweenEyes, Iy, eyeSize );   }
-// mouth   fill(bg_color3);   ellipse(centerX, Iy + MouthDrop,
-// distactBetweenEyes, mouth_value); }
+///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+// function orangeAlienFace(tilt_value, eye_value, mouth_value) {
+//     const bg_color3 = [71, 222, 219];
+//     const fg_color3 = [255, 93, 35];
+//     let headSize = 20
+//     let eyeSize = 5;
+//     let centerX = 0;
+//     let Iy = -4
+//     let distactBetweenEyes = 5
+//     let MouthDrop = 7
+//     rotation in degrees
+// angleMode(DEGREES);
+// rotate(tilt_value);
+// // head
+// noStroke();
+// fill(fg_color3);
+// ellipse(centerX, 0, headSize, headSize);
+// // 2 traditonal eyes
+// if (eye_value === 1 || eye_value == 3) {
+//     fill(bg_color3);
+// ellipse(centerX, Iy, eyeSize-1,eyeSize);
+// }
+// // middle eye
+// if (eye_value >=2) {
+//     fill(bg_color3);
+//     ellipse(centerX - distactBetweenEyes, Iy, eyeSize);
+//     ellipse(centerX + distactBetweenEyes, Iy, eyeSize );
+// }
+// // mouth
+// fill(bg_color3);
+// ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
+// }
